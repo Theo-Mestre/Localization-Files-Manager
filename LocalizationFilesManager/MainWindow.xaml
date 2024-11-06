@@ -5,16 +5,143 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalizationFilesManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Menu VerticalAlignment="Top" Height="22">
-            <Button Content="File" Click="Button_Click"/>
-            <Button Content="Edit" Click="Button_Edit"/>
-        </Menu>
-        <DataGrid Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,22,0,0" VerticalAlignment="Top" SelectionChanged="dataGrid_SelectionChanged" Grid.RowSpan="5">
-            <DataGrid.Columns>
+        Title="Localization App"
+        WindowStyle="None" 
+        Width="1280"
+        Height="720" 
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent">
 
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <Border Background = "{DynamicResource BackgroundBrush}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "150"/>
+                <ColumnDefinition Width = "*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "25"/>
+                <RowDefinition Height = "75"/>
+                <RowDefinition Height = "*"/>
+            </Grid.RowDefinitions>
+
+            <!--Top Bar-->
+            <Border Grid.ColumnSpan="2" 
+                    Background="{DynamicResource TopBarBackgroundBrush}" 
+                    MouseDown="OnTopBarClicked">
+
+                <Grid HorizontalAlignment="Stretch">
+
+                    <TextBlock 
+                    Text="Localization App"
+                    Foreground="{DynamicResource TopBarForegroundBrush}"
+                    FontFamily="{StaticResource Font}"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    </TextBlock>
+
+                    <StackPanel
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                        <Button 
+                            Name="MinimizeButton"
+                            Content="⎯"
+                            Style="{StaticResource TopBarButtonTheme}"
+                            Click="OnMinimizeButtonClicked"
+                            >
+                        </Button>
+
+                        <Button 
+                            Name="MaximizeButton"
+                            Content="⬜"
+                            Style="{StaticResource TopBarButtonTheme}"
+                            Click="OnMaximizeButtonClicked">
+                        </Button>
+
+                        <Button 
+                            Name="CloseButton"
+                            Content="✕"
+                            Style="{StaticResource TopBarButtonTheme}"
+                            Click="OnCloseButtonClicked">
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+
+            </Border>
+
+            <!--App Icon-->
+            <Border Grid.Row="1">
+                <Image 
+                    Width="50"
+                    Height="50"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/Images/TranslateIcon.png"
+                    RenderTransformOrigin="0.5, 0.5">
+                </Image>
+
+            </Border>
+
+            <!--Left Menu-->
+            <StackPanel Grid.Row="2">
+
+                <Button 
+                    Name="OpenFileButton"
+                    Content="Open File"
+                    Foreground="White"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnOpenFileButtonClicked">
+                </Button>
+
+                <Button 
+                    Name="SaveFileButton"
+                    Content="Save File"
+                    Foreground="White"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnSaveFileButtonClicked">
+                </Button>
+            </StackPanel>
+
+            <StackPanel 
+                Grid.Row="2"
+                VerticalAlignment="Bottom">
+
+                <!--Theme Switch-->
+                <TextBlock 
+                    Text="Theme"
+                    Foreground="White"
+                    FontFamily="{StaticResource Font}"
+                    FontSize="20"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+
+                <ToggleButton 
+                x:Name="ThemeSwitch"
+                Style="{StaticResource ToggleButtonStyle}"
+                Checked="OnThemeSwitchChecked"
+                Unchecked="OnThemeSwitchChecked"
+                Margin="10,10,10,20"/>
+            </StackPanel>
+
+            <!--Data Grid-->
+            <DataGrid 
+                Grid.Row="1"
+                Grid.Column="1"
+                Name="dataGrid" 
+                Margin="10,10,10,10" 
+                VerticalAlignment="Top" 
+                d:ItemsSource="{d:SampleData ItemCount=5}"  
+                Grid.RowSpan="5">
+
+                <DataGrid.Columns>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+    </Border>
 </Window>

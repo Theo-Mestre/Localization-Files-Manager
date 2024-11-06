@@ -1,13 +1,6 @@
-﻿using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LocalizationFilesManager
 {
@@ -37,20 +30,6 @@ namespace LocalizationFilesManager
                 //l'ajout'
                 dataGrid.Columns.Add(textColumn);
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        } 
-        private void Button_Edit(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
     }
 }
