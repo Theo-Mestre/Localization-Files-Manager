@@ -23,7 +23,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height = "25"/>
                 <RowDefinition Height = "75"/>
-                <RowDefinition Height = "*"/>
+                <RowDefinition Height = "123*"/>
+                <RowDefinition Height="187*"/>
             </Grid.RowDefinitions>
 
             <!--Top Bar-->
@@ -75,45 +76,56 @@
 
             <!--App Icon-->
             <Border Grid.Row="1">
-                <Image 
+                <Grid>
+
+                    <Image
+                    Name="AppIcon"
                     Width="50"
                     Height="50"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Source="/Images/TranslateIcon.png"
-                    RenderTransformOrigin="0.5, 0.5">
-                </Image>
+                    Source="/Images/TranslateIcon.png">
+                    </Image>
 
+                    <Rectangle 
+                        Width="50"
+                        Height="50"
+                        Fill="{DynamicResource TextBrush}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{Binding ElementName=AppIcon}"/>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Grid>
             </Border>
 
             <!--Left Menu-->
-            <StackPanel Grid.Row="2">
+            <StackPanel Grid.Row="2" Grid.RowSpan="2">
 
-                <Button 
-                    Name="OpenFileButton"
+                <Button
                     Content="Open File"
-                    Foreground="White"
                     Style="{StaticResource ButtonTheme}" 
                     Click="OnOpenFileButtonClicked">
                 </Button>
 
-                <Button 
-                    Name="SaveFileButton"
+                <Button
                     Content="Save File"
-                    Foreground="White"
                     Style="{StaticResource ButtonTheme}" 
                     Click="OnSaveFileButtonClicked">
+                </Button>
+
+                <Button
+                    Content="Export As"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnExportAsButtonClicked">
                 </Button>
             </StackPanel>
 
             <StackPanel 
-                Grid.Row="2"
-                VerticalAlignment="Bottom">
+                Grid.Row="3"
+                VerticalAlignment="Top" Margin="0,296,0,0">
 
                 <!--Theme Switch-->
-                <TextBlock 
+                <TextBlock
                     Text="Theme"
-                    Foreground="White"
+                    Foreground="{DynamicResource TextBrush}"
                     FontFamily="{StaticResource Font}"
                     FontSize="20"
                     HorizontalAlignment="Center">
@@ -132,10 +144,10 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Name="dataGrid" 
-                Margin="10,10,10,10" 
+                Margin="10,10,10,0" 
                 VerticalAlignment="Top" 
                 d:ItemsSource="{d:SampleData ItemCount=5}"  
-                Grid.RowSpan="5">
+                Grid.RowSpan="2">
 
                 <DataGrid.Columns>
 

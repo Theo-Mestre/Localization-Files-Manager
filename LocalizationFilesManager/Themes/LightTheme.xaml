@@ -1,16 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFF"/>
-    <SolidColorBrush x:Key="ForegroundBrush" Color="#292929"/>
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#FFEFEFF5"/>
+    <SolidColorBrush x:Key="ForegroundBrush" Color="#d2d3db"/>
 
-    <SolidColorBrush x:Key="ButtonBrush" Color="#BF73AB"/>
-    <SolidColorBrush x:Key="ButtonHoveredBrush" Color="#8C5A84"/>
-    <SolidColorBrush x:Key="ButtonClickedBrush" Color="#694566"/>
+    <SolidColorBrush x:Key="ButtonBrush" Color="#d2d3db"/>
+    <SolidColorBrush x:Key="ButtonHoveredBrush" Color="#FFC2C3CA"/>
+    <SolidColorBrush x:Key="ButtonClickedBrush" Color="#FFAAABB3"/>
 
-    <SolidColorBrush x:Key="TextBrush" Color="Black"/>
+    <SolidColorBrush x:Key="TextBrush" Color="#FF404040"/>
 
-    <SolidColorBrush x:Key="TopBarBackgroundBrush" Color="#202020"/>
-    <SolidColorBrush x:Key="TopBarForegroundBrush" Color="#292929"/>
+    <SolidColorBrush x:Key="TopBarBackgroundBrush" Color="#d2d3db"/>
+    <SolidColorBrush x:Key="TopBarForegroundBrush" Color="#FF404040"/>
+    <SolidColorBrush x:Key="TopBarForegroundHovered" Color="#FF929292"/>
 
 </ResourceDictionary>

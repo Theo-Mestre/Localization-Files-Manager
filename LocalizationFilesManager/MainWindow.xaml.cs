@@ -4,16 +4,24 @@ using System.Windows.Data;
 
 namespace LocalizationFilesManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public string[] Columns = { "Id", "en", "fr", "es", "comments" };
 
+        private string currentFilePath = "";
+        private string supportedFiles = "";
+        private Dictionary<string, Action<string>[]> fileProcessingMethods = new();
+        private enum FileOperation
+        {
+            Open = 0,
+            Save = 1
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+
+            InitializeFileInfo();
 
             foreach (string column in Columns)
             {
@@ -30,6 +38,18 @@ namespace LocalizationFilesManager
                 //l'ajout'
                 dataGrid.Columns.Add(textColumn);
             }
+        }
+
+        private void InitializeFileInfo()
+        {
+            supportedFiles = "All files (*.csv, *.json, *.xml)|*.csv;*.json;*.xml|"
+                           + "CSV files (*.csv)|*.csv|"
+                           + "JSON files (*.json)|*.json|"
+                           + "XML files (*.xml)|*.xml";
+
+            fileProcessingMethods[".csv"] = [OnCSVFileOpened, OnCSVFileSaved];
+            fileProcessingMethods[".json"] = [OnJsonFileOpened, OnJsonFileSaved];
+            fileProcessingMethods[".xml"] = [OnXMLFileOpened, OnXMLFileSaved];
         }
     }
 }

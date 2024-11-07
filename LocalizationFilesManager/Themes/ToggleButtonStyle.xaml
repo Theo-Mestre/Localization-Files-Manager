@@ -12,7 +12,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border 
-                            Width="58"
+                            Width="52"
                             Height="30"
                             CornerRadius="15"
                             Background="{DynamicResource ButtonBrush}">
@@ -21,12 +21,12 @@
                                 Name="Switch"
                                 Width="22"
                                 Height="22"
-                                Margin="4, 0, 4, 0"
+                                Margin="4, 4, 4, 4"
                                 CornerRadius="11"
                                 Background="{DynamicResource ForegroundBrush}">
 
                                 <Border.Effect>
-                                    <DropShadowEffect Opacity="0.2"/>
+                                    <DropShadowEffect Opacity="0.1"/>
                                 </Border.Effect>
                             </Border>
                         </Border>

@@ -37,7 +37,10 @@
 
         <Style.Triggers>
             <Trigger  Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource TopBarForegroundHovered}"/>
+                <Setter Property="Background" Value="{DynamicResource ButtonHoveredBrush}"/>
+            </Trigger>
+            <Trigger  Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ButtonClickedBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
