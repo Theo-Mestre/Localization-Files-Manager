@@ -140,18 +140,14 @@
             </StackPanel>
 
             <!--Data Grid-->
-            <DataGrid 
+            <DataGrid
+                Name="DataGrid"
                 Grid.Row="1"
                 Grid.Column="1"
-                Name="dataGrid" 
-                Margin="10,10,10,0" 
+                Grid.RowSpan="3"
+                Margin="10,10,10,10" 
                 VerticalAlignment="Top" 
-                d:ItemsSource="{d:SampleData ItemCount=5}"  
-                Grid.RowSpan="2">
-
-                <DataGrid.Columns>
-
-                </DataGrid.Columns>
+                >
             </DataGrid>
         </Grid>
 
