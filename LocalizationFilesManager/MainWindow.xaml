@@ -141,12 +141,14 @@
 
             <!--Data Grid-->
             <DataGrid
-                Name="DataGrid"
+                Name="TranslationGrid"
                 Grid.Row="1"
                 Grid.Column="1"
                 Grid.RowSpan="3"
                 Margin="10,10,10,10" 
-                VerticalAlignment="Top" 
+                VerticalAlignment="Top"
+                AutoGenerateColumns="False"
+                IsReadOnly="False" CellEditEnding="OnGridDataEdited"
                 >
             </DataGrid>
         </Grid>

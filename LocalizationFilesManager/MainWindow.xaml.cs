@@ -35,5 +35,10 @@ namespace LocalizationFilesManager
             fileProcessingMethods[".json"] = [OnJsonFileOpened, OnJsonFileSaved];
             fileProcessingMethods[".xml"] = [OnXMLFileOpened, OnXMLFileSaved];
         }
+
+        private void OnGridDataEdited(object sender)
+        {
+
+        }
     }
 }
