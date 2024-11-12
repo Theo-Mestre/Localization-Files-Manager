@@ -60,7 +60,7 @@ namespace LocalizationFilesManager
 
             // Add the id value column
             var keyColumn = new DataGridTextColumn();
-            keyColumn.Header = "Key";
+            keyColumn.Header = gridData.Key.Key;
             keyColumn.Binding = new Binding("Key");
             grid.Columns.Add(keyColumn);
 
@@ -73,7 +73,7 @@ namespace LocalizationFilesManager
             }
 
             var commentsColumn = new DataGridTextColumn();
-            commentsColumn.Header = "Comments";
+            commentsColumn.Header = gridData.Key.Comments;
             commentsColumn.Binding = new Binding("Comments");
             grid.Columns.Add(commentsColumn);
         }

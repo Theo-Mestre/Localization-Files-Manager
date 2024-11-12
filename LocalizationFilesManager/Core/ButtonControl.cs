@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
 namespace LocalizationFilesManager
 {
@@ -149,6 +150,69 @@ namespace LocalizationFilesManager
 
             gridData.Rows.RemoveAt(dataGrid.SelectedIndex);
             dataGrid.SelectedIndex = -1;
+        }
+
+        private void OnAddColumnButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var dataGrid = GetDataGrid();
+            if (dataGrid == null) return;
+
+            var textBox = App.Current.MainWindow.FindName("LanguageTextbox") as TextBox;
+            if (textBox == null) return;
+
+            string language = textBox.Text;
+            if (string.IsNullOrEmpty(language))
+            {
+                MessageBox.Show("Please enter a language name");
+                return;
+            }
+
+            gridData.Key.Languages.Insert(gridData.Key.Languages.Count - 1, language);
+
+            foreach (var row in gridData.Rows)
+            {
+                row.Languages.Add("");
+            }
+
+            dataGrid.Columns.Insert(dataGrid.Columns.Count - 1, new DataGridTextColumn
+            {
+                Header = language,
+                Binding = new System.Windows.Data.Binding($"Languages[{gridData.Key.Languages.Count - 1}]")
+            });
+        }
+
+        private void OnRemoveColumnButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var dataGrid = GetDataGrid();
+            if (dataGrid == null) return;
+
+            var textBox = App.Current.MainWindow.FindName("LanguageTextbox") as TextBox;
+            if (textBox == null) return;
+
+            string language = textBox.Text;
+            if (string.IsNullOrEmpty(language))
+            {
+                MessageBox.Show("Please enter a language name");
+                return;
+            }
+
+            if (!gridData.Key.Languages.Contains(language))
+            {
+                MessageBox.Show("Language not found");
+                return;
+            }
+
+            int index = gridData.Key.Languages.IndexOf(language);
+
+            gridData.Key.Languages.RemoveAt(index);
+            dataGrid.Columns.Clear();
+
+            for (int i = 0; i < gridData.Rows.Count; i++)
+            {
+                gridData.Rows[i].Languages.RemoveAt(index);
+            }
+
+            InitializeDataGridKeyColumn();
         }
         #endregion
     }
