@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Themes/ButtonTheme.xaml"/>
                 <ResourceDictionary Source="Themes/ToggleButtonStyle.xaml"/>
                 <ResourceDictionary Source="Themes/TopBarStyle.xaml"/>
+                <ResourceDictionary Source="Themes/DataGridTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
