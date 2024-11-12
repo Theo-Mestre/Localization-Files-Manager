@@ -1,5 +1,9 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace LocalizationFilesManager
 {
@@ -11,9 +15,31 @@ namespace LocalizationFilesManager
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
-                string content = reader.ReadToEnd();
+               // string content = reader.ReadToEnd();
+
                 // Process CSV content here
-                MessageBox.Show("CSV Loaded:\n" + content);
+                string csvLine = reader.ReadLine();
+
+                var grid = GetDataGrid();
+
+                gridData.Rows.Clear();
+
+                string[] text = new string[3];
+
+                if(csvLine == ";")
+                {
+
+                }
+
+                gridData.Rows.Add(
+                new RowData
+                {
+                    Key = csvLine,
+                    Languages = new ObservableCollection<string> { "Value4", "Value5", "Value6" },
+                    Comments = "Comments2"
+                });
+
+                MessageBox.Show("CSV Loaded:\n" + csvLine);
             }
         }
 
