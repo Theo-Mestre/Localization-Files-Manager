@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Input;
 using System.IO;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace LocalizationFilesManager
 {
@@ -113,6 +115,27 @@ namespace LocalizationFilesManager
         {
             Application.Current.Shutdown();
             return;
+        }
+        #endregion
+        #region DataGridControls
+        private void OnAddRowBelowButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var dataGrid = GetDataGrid();
+            if (dataGrid == null) return;
+
+            if (dataGrid.SelectedIndex == -1)
+            {
+                gridData.Rows.Add(new RowData());
+            }
+            else
+            {
+                gridData.Rows.Insert(dataGrid.SelectedIndex + 1, new RowData());
+            }
+        }
+
+        private void OnRemoveRowButtonClicked(object sender, RoutedEventArgs e)
+        {
+            
         }
         #endregion
     }

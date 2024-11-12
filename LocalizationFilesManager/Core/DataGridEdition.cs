@@ -31,7 +31,7 @@ namespace LocalizationFilesManager
         private void InitializeDataGrid()
         {
             // Exemple of data grid initialization
-            gridData.Key.Key = "UUU";
+            gridData.Key.Key = "Key";
             gridData.Key.Languages = new ObservableCollection<string> { "En", "Fr", "Ja" };
             gridData.Key.Comments = "Comments";
 
@@ -63,6 +63,7 @@ namespace LocalizationFilesManager
             grid.ItemsSource = gridData.Rows;
             grid.Columns.Clear();
 
+            // Add the id value column
             var keyColumn = new DataGridTextColumn();
             keyColumn.Header = "Key";
             keyColumn.Binding = new Binding("Key");
@@ -84,6 +85,7 @@ namespace LocalizationFilesManager
 
         private void OnGridDataEdited(object sender, EventArgs e)
         {
+           
         }
 
         private DataGrid GetDataGrid()

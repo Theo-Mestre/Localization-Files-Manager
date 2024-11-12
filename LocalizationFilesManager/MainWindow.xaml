@@ -139,12 +139,34 @@
                 Margin="10,10,10,20"/>
             </StackPanel>
 
+            <!--Grid Selection Button-->
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="1"
+                Orientation="Horizontal">
+
+                <Button
+                    Name="AddRowBelow"
+                    Content="Add Row Below"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnAddRowBelowButtonClicked"/>
+
+                <Button
+                    Name="RemoveRow"
+                    Content="Remove Row"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnRemoveRowButtonClicked"/>
+
+                
+                
+            </StackPanel>
+            
             <!--Data Grid-->
             <DataGrid
                 Name="TranslationGrid"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1"
-                Grid.RowSpan="3"
+                Grid.RowSpan="2"
                 Margin="10,10,10,10" 
                 VerticalAlignment="Top"
                 AutoGenerateColumns="False"
