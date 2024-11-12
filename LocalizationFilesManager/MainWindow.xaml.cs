@@ -26,7 +26,7 @@ namespace LocalizationFilesManager
 
         private void InitializeFileInfo()
         {
-            supportedFiles = "All files (*.csv, *.json, *.xml)|*.csv;*.json;*.xml|"
+            supportedFiles = "All files (*.csv, *.json, *.xml, *.cs, *.cpp)|*.csv;*.json;*.xml;*.cs;*.cpp|"
                            + "CSV files (*.csv)|*.csv|"
                            + "JSON files (*.json)|*.json|"
                            + "XML files (*.xml)|*.xml";
@@ -34,6 +34,8 @@ namespace LocalizationFilesManager
             fileProcessingMethods[".csv"] = [OnCSVFileOpened, OnCSVFileSaved];
             fileProcessingMethods[".json"] = [OnJsonFileOpened, OnJsonFileSaved];
             fileProcessingMethods[".xml"] = [OnXMLFileOpened, OnXMLFileSaved];
+            fileProcessingMethods[".cs"] = [OnCsFileOpened, OnCsFileSaved];
+            //fileProcessingMethods[".cpp"] = [OnCppFileOpened, OnCppFileSaved];
         }
     }
 }

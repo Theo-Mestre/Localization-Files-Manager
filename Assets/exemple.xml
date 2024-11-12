@@ -1,7 +1,7 @@
 <languages>
-<id value="Play">
-<en>Play</en>
-<fr>Jouer</fr>
-<es>Jugar</es>
-</id>
+	<id value="Play">
+		<en>Play</en>
+		<fr>Jouer</fr>
+		<es>Jugar</es>
+	</id>
 </languages>

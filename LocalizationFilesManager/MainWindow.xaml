@@ -157,6 +157,34 @@
                     Style="{StaticResource ButtonTheme}" 
                     Click="OnRemoveRowButtonClicked"/>
 
+                <StackPanel
+                    Orientation="Horizontal">
+
+                    <TextBox
+                        Name="LanguageTextbox"
+                        Height="50"
+                        Width="100"
+                        Margin="10,0,10,0"
+                        >
+                        <TextBox.Text>
+                            Add Language
+                        </TextBox.Text>
+                    </TextBox>
+
+
+                    <Button
+                    Name="AddColumn"
+                    Content="Add Language"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnAddColumnButtonClicked"/>
+
+                    <Button
+                    Name="RemoveColumn"
+                    Content="Remove Language"
+                    Style="{StaticResource ButtonTheme}" 
+                    Click="OnRemoveColumnButtonClicked"/>
+
+                </StackPanel>
             </StackPanel>
 
             <!--Data Grid-->
