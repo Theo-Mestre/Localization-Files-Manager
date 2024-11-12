@@ -13,6 +13,9 @@ namespace LocalizationFilesManager
             {
                 string content = reader.ReadToEnd();
                 // Process CSV content here
+
+                gridData.Rows.Clear();
+
                 MessageBox.Show("CSV Loaded:\n" + content);
             }
         }

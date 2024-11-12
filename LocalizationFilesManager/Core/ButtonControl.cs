@@ -122,20 +122,33 @@ namespace LocalizationFilesManager
         {
             var dataGrid = GetDataGrid();
             if (dataGrid == null) return;
+           
+            var row = new RowData();
+            row.Languages = new ObservableCollection<string>(new string[gridData.Key.Languages.Count]);
 
             if (dataGrid.SelectedIndex == -1)
             {
-                gridData.Rows.Add(new RowData());
+                gridData.Rows.Add(row);
+                return;
             }
-            else
+
+            if (dataGrid.SelectedIndex >= gridData.Rows.Count - 1)
             {
-                gridData.Rows.Insert(dataGrid.SelectedIndex + 1, new RowData());
+                gridData.Rows.Add(row);
+                return;
             }
+
+            gridData.Rows.Insert(dataGrid.SelectedIndex, row);
         }
 
         private void OnRemoveRowButtonClicked(object sender, RoutedEventArgs e)
         {
-            
+            var dataGrid = GetDataGrid();
+
+            if (dataGrid == null || dataGrid.SelectedIndex == -1) return;
+
+            gridData.Rows.RemoveAt(dataGrid.SelectedIndex);
+            dataGrid.SelectedIndex = -1;
         }
         #endregion
     }

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows;
-using System.Xml.Linq;
-using System.Windows.Input;
-using System.Collections.ObjectModel;
 
 namespace LocalizationFilesManager
 {
@@ -50,8 +45,8 @@ namespace LocalizationFilesManager
                     Languages = new ObservableCollection<string> { "Value4", "Value5", "Value6" },
                     Comments = "Comments2"
                 });
-            // End Exemple
 
+            // End Exemple
             InitializeDataGridKeyColumn();
         }
 
@@ -81,11 +76,6 @@ namespace LocalizationFilesManager
             commentsColumn.Header = "Comments";
             commentsColumn.Binding = new Binding("Comments");
             grid.Columns.Add(commentsColumn);
-        }
-
-        private void OnGridDataEdited(object sender, EventArgs e)
-        {
-           
         }
 
         private DataGrid GetDataGrid()
