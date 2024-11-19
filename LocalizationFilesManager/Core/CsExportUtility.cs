@@ -1,28 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 
 namespace LocalizationFilesManager
 {
     public partial class MainWindow
     {
-        private void OnCsFileOpened(string filePath)
-        {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string content = reader.ReadToEnd();
-                // Process CSV content here
-
-                gridData.Rows.Clear();
-
-                MessageBox.Show("CSV Loaded:\n" + content);
-            }
-        }
-
         private void OnCsFileSaved(string filePath)
         {
             using (StreamWriter writer = new StreamWriter(filePath))
@@ -61,19 +43,19 @@ namespace LocalizationFilesManager
                 string addContent = "\t\t\t\tdata.Add(\"{Key}\", \"{Value}\");\r\n";
 
                 string switchContent = "";
-                for (int i = 0; i < gridData.Rows.Count; i++)
+                for (int i = 0; i < gridData.Key.Languages.Count; i++)
                 {
-                    string u = "";
-                    var row = gridData.Rows[i];
+                    string keyValues = "";
                     switchContent += switchBranch.Replace("{0}", gridData.Key.Languages[i]);
 
-                    for (int j = 0; j < gridData.Key.Languages.Count; j++)
+                    for (int j = 0; j < gridData.Rows.Count; j++)
                     {
-                        u += addContent
+                        var row = gridData.Rows[j];
+                        keyValues += addContent
                             .Replace("{Key}", row.Key)
-                            .Replace("{Value}", row.Languages[j]);
+                            .Replace("{Value}", row.Languages[i]);
                     }
-                    switchContent = switchContent.Replace("{Add}", u);
+                    switchContent = switchContent.Replace("{Add}", keyValues);
                 }
 
                 csContent = csContent.Replace("{SwitchContent}", switchContent);

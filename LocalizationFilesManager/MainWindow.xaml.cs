@@ -26,16 +26,18 @@ namespace LocalizationFilesManager
 
         private void InitializeFileInfo()
         {
-            supportedFiles = "All files (*.csv, *.json, *.xml, *.cs, *.cpp)|*.csv;*.json;*.xml;*.cs;*.cpp|"
+            supportedFiles = "All files (*.csv, *.json, *.xml, *.cs, *.h)|*.csv;*.json;*.xml;*.cs;*.h|"
                            + "CSV files (*.csv)|*.csv|"
                            + "JSON files (*.json)|*.json|"
-                           + "XML files (*.xml)|*.xml";
+                           + "XML files (*.xml)|*.xml"
+                            + "C# files (*.cs)|*.cs"
+                            + "C++ Header files (*.h)|*.h";
 
             fileProcessingMethods[".csv"] = [OnCSVFileOpened, OnCSVFileSaved];
             fileProcessingMethods[".json"] = [OnJsonFileOpened, OnJsonFileSaved];
             fileProcessingMethods[".xml"] = [OnXMLFileOpened, OnXMLFileSaved];
-            fileProcessingMethods[".cs"] = [OnCsFileOpened, OnCsFileSaved];
-            //fileProcessingMethods[".cpp"] = [OnCppFileOpened, OnCppFileSaved];
+            fileProcessingMethods[".cs"] = [null, OnCsFileSaved];
+            fileProcessingMethods[".h"] = [null, OnCppFileSaved];
         }
     }
 }

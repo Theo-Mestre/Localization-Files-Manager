@@ -3,6 +3,7 @@
 
     <SolidColorBrush x:Key="BackgroundBrush" Color="#292929"/>
     <SolidColorBrush x:Key="ForegroundBrush" Color="White"/>
+    <SolidColorBrush x:Key="GridBackgroundBrush" Color="#FF2F2F2F"/>
 
     <SolidColorBrush x:Key="ButtonBrush" Color="#BF73AB"/>
     <SolidColorBrush x:Key="ButtonHoveredBrush" Color="#8C5A84"/>

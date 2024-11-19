@@ -39,7 +39,7 @@
         <Setter Property="RowHeaderWidth" Value="0"/>
         <Setter Property="RowHeight" Value="30"/>
         <Setter Property="ColumnWidth" Value="10*"/>
-        <Setter Property="RowBackground" Value="{DynamicResource BackgroundBrush}"/>
+        <Setter Property="RowBackground" Value="{DynamicResource GridBackgroundBrush}"/>
         <Setter Property="AlternatingRowBackground" Value="{DynamicResource TopBarBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource Font}"/>
