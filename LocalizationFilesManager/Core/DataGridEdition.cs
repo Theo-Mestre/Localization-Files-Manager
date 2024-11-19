@@ -22,6 +22,7 @@ namespace LocalizationFilesManager
     public partial class MainWindow
     {
         GridData gridData = new();
+        int selectedRow = -1;
 
         private void InitializeDataGrid()
         {
@@ -83,5 +84,12 @@ namespace LocalizationFilesManager
             return Application.Current.MainWindow.FindName("TranslationGrid") as DataGrid;
         }
 
+        void OnSelectedCellChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            var dataGrid = GetDataGrid();
+            if (dataGrid == null) return;
+
+            selectedRow = e.AddedCells.Count > 0 ? dataGrid.Items.IndexOf(e.AddedCells[0].Item) : -1;
+        }
     }
 }

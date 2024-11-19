@@ -162,13 +162,9 @@
 
                     <TextBox
                         Name="LanguageTextbox"
-                        Height="50"
-                        Width="100"
-                        Margin="10,0,10,0"
-                        >
-                        <TextBox.Text>
-                            Add Language
-                        </TextBox.Text>
+                        Width="250"
+                        Height="40"
+                        Style ="{StaticResource TextBoxTheme}">
                     </TextBox>
 
 
@@ -202,7 +198,9 @@
                 CanUserDeleteRows="False"
                 CanUserResizeRows="False"
                 IsReadOnly="False"
+                BorderThickness="0"
                 Style="{StaticResource DataGridStyle}"
+                SelectedCellsChanged="OnSelectedCellChanged"
                 />
         </Grid>
 
