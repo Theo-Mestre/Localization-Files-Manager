@@ -1,5 +1,5 @@
-Id;en;fr;ja
-Start;Start;Démarrer;開始
-Leaderboards;Leaderboards;Classements;リーダーボード”
-Options;Options;Options;オプション
-Quit;Quit;Quitter;よす
+Id;en;fr;ja;
+Start;Start;Démarrer;開始;
+Leaderboards;Leaderboards;Classements;リーダーボード”;
+Options;Options;Options;オプション;
+Quit;Quit;Quitter;よす;
