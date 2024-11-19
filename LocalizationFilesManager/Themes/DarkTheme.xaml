@@ -14,4 +14,8 @@
     <SolidColorBrush x:Key="TopBarBackgroundHovered" Color="#404040"/>
     <SolidColorBrush x:Key="TopBarForegroundBrush" Color="#757575"/>
 
+    <SolidColorBrush x:Key="TextBoxBackgroundBrush" Color="#404040"/>
+    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="#FF616161"/>
+    <SolidColorBrush x:Key="TextBoxForegroundBrush" Color="White"/>
+
 </ResourceDictionary>

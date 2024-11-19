@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using System.IO;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 
@@ -127,28 +126,29 @@ namespace LocalizationFilesManager
             var row = new RowData();
             row.Languages = new ObservableCollection<string>(new string[gridData.Key.Languages.Count]);
 
-            if (dataGrid.SelectedIndex == -1)
+            // Check if the row of the selected cell is valid
+            if (selectedRow == -1)
             {
                 gridData.Rows.Add(row);
                 return;
             }
 
-            if (dataGrid.SelectedIndex >= gridData.Rows.Count - 1)
+            if (selectedRow >= gridData.Rows.Count - 1)
             {
                 gridData.Rows.Add(row);
                 return;
             }
 
-            gridData.Rows.Insert(dataGrid.SelectedIndex, row);
+            gridData.Rows.Insert(selectedRow, row);
         }
 
         private void OnRemoveRowButtonClicked(object sender, RoutedEventArgs e)
         {
             var dataGrid = GetDataGrid();
 
-            if (dataGrid == null || dataGrid.SelectedIndex == -1) return;
+            if (dataGrid == null || selectedRow == -1) return;
 
-            gridData.Rows.RemoveAt(dataGrid.SelectedIndex);
+            gridData.Rows.RemoveAt(selectedRow);
             dataGrid.SelectedIndex = -1;
         }
 
@@ -158,9 +158,10 @@ namespace LocalizationFilesManager
             if (dataGrid == null) return;
 
             var textBox = App.Current.MainWindow.FindName("LanguageTextbox") as TextBox;
-            if (textBox == null) return;
+            var searchBox = textBox?.Template.FindName("SearchBox", textBox) as TextBox;
+            if (searchBox == null) return;
 
-            string language = textBox.Text;
+            string language = searchBox.Text;
             if (string.IsNullOrEmpty(language))
             {
                 MessageBox.Show("Please enter a language name");
@@ -187,9 +188,10 @@ namespace LocalizationFilesManager
             if (dataGrid == null) return;
 
             var textBox = App.Current.MainWindow.FindName("LanguageTextbox") as TextBox;
-            if (textBox == null) return;
+            var searchBox = textBox?.Template.FindName("SearchBox", textBox) as TextBox;
+            if (searchBox == null) return;
 
-            string language = textBox.Text;
+            string language = searchBox.Text;
             if (string.IsNullOrEmpty(language))
             {
                 MessageBox.Show("Please enter a language name");
