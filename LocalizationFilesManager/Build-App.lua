@@ -5,6 +5,7 @@ project "LocalizationFilesManager"
     targetdir "../Binaries"
     objdir "../Binaries/intermediate"
     framework "4.8"
+	nuget { "Newtonsoft.Json:13.0.3" }
     flags { "WPF" }
 
     files { "**.cs", "**.xaml", "**.config", "**.png", "**.otf" }

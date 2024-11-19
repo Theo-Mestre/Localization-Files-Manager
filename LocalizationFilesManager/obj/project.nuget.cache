@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cTO1tI3/0SU=",
+  "success": true,
+  "projectFilePath": "D:\\SVN\\Eleves\\kanton\\Tools\\temp\\Localization-Files-Manager\\LocalizationFilesManager\\LocalizationFilesManager.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Etudiant1\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

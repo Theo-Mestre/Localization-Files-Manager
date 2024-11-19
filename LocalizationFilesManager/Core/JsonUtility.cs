@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Windows;
-using System.Windows.Documents;
 
 namespace LocalizationFilesManager
 {
@@ -13,39 +11,44 @@ namespace LocalizationFilesManager
 
         private void OnJsonFileOpened(string filePath)
         {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string content = reader.ReadToEnd();
-                gridData.Rows.Clear();
+            gridData.Rows.Clear();
 
-                /*gridData.Rows.Add(
+            string content = File.ReadAllText(filePath);
+            JObject jObject = JObject.Parse(content);
+
+            foreach (var entry in jObject)
+            {
+                string key = entry.Key;
+                JObject values = (JObject)entry.Value;
+                ObservableCollection<string> languages = [];
+                string comment = "";
+
+                foreach (var subKey in values)
+                {
+                    string subKeyName = subKey.Key;
+                    gridData.Key.Languages.Add(subKeyName);
+                }
+
+                int i = 0;
+                foreach (var subKey in values)
+                {
+                    string value = subKey.Value.ToString();
+
+                    if (i == values.Count - 1)
+                        comment = value;
+                    else
+                        languages.Add(value);
+
+                    i++;
+                }
+
+                gridData.Rows.Add(
                     new RowData
                     {
                         Key = key,
-                        Languages = values,
+                        Languages = languages,
                         Comments = comment
-                    });*/
-
-                string[] lines = content.Split('\n');
-                foreach (string line in lines)
-                {
-                    /* TODO LIST:
-                     * 
-                     * remove all '"' in the line
-                     * remove the ':' in the line
-                     * 
-                     * store key
-                     * store values
-                     * store comment
-                     * 
-                     * add to Rows
-                     * 
-                     */
-
-                    MessageBox.Show("Line:\n" + line);
-                }
-
-                MessageBox.Show("JSON Loaded:\n" + content);
+                    });
             }
         }
 
@@ -53,17 +56,32 @@ namespace LocalizationFilesManager
         {
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                string content = "";
-                List<string> keys = [];
-                List<ObservableCollection<string>> values = [];
-                List<string> comments = [];
+                string content = "{\n";
+                ObservableCollection<string> keyLanguages = gridData.Key.Languages;
+                ObservableCollection<RowData> rows = gridData.Rows;
 
-                foreach (RowData rowData in gridData.Rows)
+                foreach (RowData rowData in rows)
                 {
-                    content += "\"" + rowData.Key + "\":\n";
-                    foreach (string value in rowData.Languages)
-                        content += "\"" + value + "\"";
+                    content += "\t\"" + rowData.Key + "\": {\n";
+
+                    for (int i = 0; i < keyLanguages.Count; i++)
+                    {
+                        string languageKey = keyLanguages[i];
+                        string value = rowData.Languages[i];
+
+                        content += "\t\t\"" + languageKey + "\": \"" + value + "\",\n";
+                    }
+
+                    content += "\t\t\"Comments\": \"" + rowData.Comments + "\"\n";
+                    content += "\t}";
+
+                    if (rowData != rows[rows.Count - 1])
+                        content += ",";
+
+                    content += "\n";
                 }
+
+                content += "}";
 
                 writer.Write(content);
                 MessageBox.Show("JSON Saved:\n" + content);
