@@ -12,6 +12,7 @@ project "LocalizationFilesManager"
     links 
     {
         "Microsoft.Csharp",
+		"System.Xml",
     }
     
     filter "configurations:Debug"
