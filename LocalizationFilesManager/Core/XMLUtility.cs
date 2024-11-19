@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
@@ -16,16 +17,51 @@ namespace LocalizationFilesManager
                 string content = reader.ReadToEnd();
                 gridData.Rows.Clear();
 
-                //XmlDocument xmlDoc = new XmlDocument();
-                //xmlDoc.LoadXml(content);
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.LoadXml(content);
 
-                //XmlNode languagesNode = xmlDoc.SelectSingleNode("/Languages");
+                XmlNode languagesNode = xmlDoc.SelectSingleNode("/Languages");
 
-                //foreach (XmlNode idNode in languagesNode.SelectNodes("id"))
-                //{
+                if (languagesNode != null)
+                {
+                    XmlNodeList idNodes = languagesNode.SelectNodes("id");
+                    for (int i = 0; i < idNodes.Count; i++)
+                    {
+                        XmlNode idNode = idNodes[i];
+                        var row = new RowData();
 
-                //}
-                MessageBox.Show("XML Loaded:\n" + content);
+                        if (idNode.Attributes["value"] != null)
+                        {
+                            row.Key = idNode.Attributes["value"].Value;
+                        }
+                        else
+                        {
+                            row.Key = string.Empty;
+                        }
+
+                        var translations = new ObservableCollection<string>();
+                        for (int j = 0; j < gridData.Key.Languages.Count; j++)
+                        {
+                            string lang = gridData.Key.Languages[j];
+                            XmlNode translationNode = idNode.SelectSingleNode(lang);
+
+                            if (translationNode != null)
+                            {
+                                translations.Add(translationNode.InnerText);
+                            }
+                            else
+                            {
+                                translations.Add(string.Empty);
+                            }
+                        }
+
+                        row.Languages = translations;
+
+                        gridData.Rows.Add(row);
+                    }
+                    MessageBox.Show("XML Loaded:\n" + content);
+                }
+
             }
         }
 
