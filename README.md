@@ -2,6 +2,8 @@
 
 **Localization Files Manager** is a WPF application designed to simplify the creation and management of localization data files for video games. The tool supports editing, importing, and exporting localization files in various formats, making it easy to manage multilingual content for game development.
 
+![image](https://github.com/user-attachments/assets/e2675eef-6164-4261-a722-ceccef1b1a4a)
+
 This project was developed as a school assignment aimed at helping us explore and learn WPF (Windows Presentation Foundation). As a result, the project's architecture may not follow optimal software engineering practices, and some bugs or limitations may still be present. While the app is functional and demonstrates core concepts of localization management, it is primarily an educational exercise rather than a production-ready solution.
 
 ## Features
